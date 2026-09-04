@@ -1,0 +1,200 @@
+{
+  "microserviceId" : "6a9aa1c1f2730d0710cb07ca",
+  "mocks" : [ {
+    "id" : "1cacec31-0cb3-4aa8-8ccc-51cd9bece3aa",
+    "microserviceId" : "6a9aa1c1f2730d0710cb07ca",
+    "specMetadataId" : "6a9aa1d340e8243f64aac20e",
+    "apiSpecName" : "ForgeNotifier - Event-Driven Notification & Alerting Service",
+    "name" : "mock-forgenotifier---event-driven-notification-&-alerting-service",
+    "mockServiceName" : "mock-forgenotifier---event-driven-notification-&-alerting-service",
+    "mockServerUrl" : "https://forgesphere.probestack.io/mock-api/v1/api/mocks/mock-274a6e75",
+    "responseLatencyMs" : 0,
+    "mockUrl" : "mock-274a6e75",
+    "isPrivate" : true,
+    "delayMs" : 0,
+    "requestCount" : 0,
+    "createdAt" : "2026-09-04T10:48:24.719Z",
+    "updatedAt" : "2026-09-04T10:48:24.751Z",
+    "endpoints" : [ {
+      "id" : "6aeb411d-974b-405e-a4b8-44c4c9f1cd8c",
+      "mockId" : "1cacec31-0cb3-4aa8-8ccc-51cd9bece3aa",
+      "path" : "/alerts/check",
+      "method" : "POST",
+      "responseStatus" : 200,
+      "responseHeaders" : {
+        "Content-Type" : "application/json"
+      },
+      "responseBody" : "{\"evaluatedRules\":5,\"triggeredAlerts\":1}",
+      "delayMs" : 0,
+      "isActive" : true,
+      "requestBodySample" : null,
+      "validationMode" : "NONE",
+      "validationSchema" : null,
+      "validateMethod" : true,
+      "createdAt" : "2026-09-04T10:48:24.924Z",
+      "updatedAt" : "2026-09-04T10:48:24.924Z"
+    }, {
+      "id" : "f5fd2d37-305b-4c8e-b3ea-5cbc44da5e7d",
+      "mockId" : "1cacec31-0cb3-4aa8-8ccc-51cd9bece3aa",
+      "path" : "/alerts/rules",
+      "method" : "GET",
+      "responseStatus" : 200,
+      "responseHeaders" : {
+        "Content-Type" : "application/json"
+      },
+      "responseBody" : "[{\"id\":\"00000000-0000-0000-0000-000000000000\",\"name\":\"Disk Space Warning\",\"metric\":\"QUEUE_DEPTH\",\"condition\":\"GREATER_THAN\",\"threshold\":80.5,\"action\":\"SLACK\",\"severity\":\"CRITICAL\",\"cooldownMinutes\":15,\"lastTriggeredAt\":\"2024-01-01T00:00:00Z\",\"createdAt\":\"2024-01-01T00:00:00Z\"}]",
+      "delayMs" : 0,
+      "isActive" : true,
+      "requestBodySample" : null,
+      "validationMode" : "NONE",
+      "validationSchema" : null,
+      "validateMethod" : true,
+      "createdAt" : "2026-09-04T10:48:24.885Z",
+      "updatedAt" : "2026-09-04T10:48:24.885Z"
+    }, {
+      "id" : "d4070f8d-add0-4375-b1d8-518d13742941",
+      "mockId" : "1cacec31-0cb3-4aa8-8ccc-51cd9bece3aa",
+      "path" : "/alerts/rules",
+      "method" : "POST",
+      "responseStatus" : 201,
+      "responseHeaders" : {
+        "Content-Type" : "application/json"
+      },
+      "responseBody" : "{\"id\":\"00000000-0000-0000-0000-000000000000\",\"name\":\"Disk Space Warning\",\"metric\":\"QUEUE_DEPTH\",\"condition\":\"GREATER_THAN\",\"threshold\":80.5,\"action\":\"SLACK\",\"severity\":\"CRITICAL\",\"cooldownMinutes\":15,\"lastTriggeredAt\":\"2024-01-01T00:00:00Z\",\"createdAt\":\"2024-01-01T00:00:00Z\"}",
+      "delayMs" : 0,
+      "isActive" : true,
+      "requestBodySample" : "{\"name\":\"High Queue Load\",\"metric\":\"QUEUE_DEPTH\",\"condition\":\"GREATER_THAN\",\"threshold\":50,\"action\":\"SLACK\",\"severity\":\"WARNING\",\"cooldownMinutes\":30}",
+      "validationMode" : "NONE",
+      "validationSchema" : null,
+      "validateMethod" : true,
+      "createdAt" : "2026-09-04T10:48:24.897Z",
+      "updatedAt" : "2026-09-04T10:48:24.897Z"
+    }, {
+      "id" : "4226c575-5ef7-4a30-b2b0-1867dd130b07",
+      "mockId" : "1cacec31-0cb3-4aa8-8ccc-51cd9bece3aa",
+      "path" : "/alerts/rules/{ruleId}",
+      "method" : "DELETE",
+      "responseStatus" : 204,
+      "responseHeaders" : {
+        "Content-Type" : "application/json"
+      },
+      "responseBody" : "{}",
+      "delayMs" : 0,
+      "isActive" : true,
+      "requestBodySample" : null,
+      "validationMode" : "NONE",
+      "validationSchema" : null,
+      "validateMethod" : true,
+      "createdAt" : "2026-09-04T10:48:24.915Z",
+      "updatedAt" : "2026-09-04T10:48:24.915Z"
+    }, {
+      "id" : "36fbcab4-b0aa-4b70-994f-1e73ae19a9f9",
+      "mockId" : "1cacec31-0cb3-4aa8-8ccc-51cd9bece3aa",
+      "path" : "/alerts/rules/{ruleId}",
+      "method" : "GET",
+      "responseStatus" : 200,
+      "responseHeaders" : {
+        "Content-Type" : "application/json"
+      },
+      "responseBody" : "{\"id\":\"00000000-0000-0000-0000-000000000000\",\"name\":\"Disk Space Warning\",\"metric\":\"QUEUE_DEPTH\",\"condition\":\"GREATER_THAN\",\"threshold\":80.5,\"action\":\"SLACK\",\"severity\":\"CRITICAL\",\"cooldownMinutes\":15,\"lastTriggeredAt\":\"2024-01-01T00:00:00Z\",\"createdAt\":\"2024-01-01T00:00:00Z\"}",
+      "delayMs" : 0,
+      "isActive" : true,
+      "requestBodySample" : null,
+      "validationMode" : "NONE",
+      "validationSchema" : null,
+      "validateMethod" : true,
+      "createdAt" : "2026-09-04T10:48:24.905Z",
+      "updatedAt" : "2026-09-04T10:48:24.906Z"
+    }, {
+      "id" : "37ec66f9-0a1d-46d2-ad28-80a3a729047a",
+      "mockId" : "1cacec31-0cb3-4aa8-8ccc-51cd9bece3aa",
+      "path" : "/notifications/email",
+      "method" : "POST",
+      "responseStatus" : 202,
+      "responseHeaders" : {
+        "Content-Type" : "application/json"
+      },
+      "responseBody" : "{\"notificationId\":\"f47ac10b-58cc-4372-a567-0e02b2c3d479\",\"status\":\"QUEUED\",\"correlationId\":\"550e8400-e29b-41d4-a716-446655440000\",\"estimatedDelivery\":\"2024-01-01T00:00:00Z\"}",
+      "delayMs" : 0,
+      "isActive" : true,
+      "requestBodySample" : "{\"to\":[\"developer@example.com\",\"lead@example.com\"],\"cc\":[\"manager@example.com\"],\"subject\":\"🚀 Enhancement Pipeline Succeeded for payment-service\",\"body\":\"<h1>Success!</h1><p>All fixes applied successfully.</p>\",\"templateId\":\"enhancement_complete\"}",
+      "validationMode" : "NONE",
+      "validationSchema" : null,
+      "validateMethod" : true,
+      "createdAt" : "2026-09-04T10:48:24.826Z",
+      "updatedAt" : "2026-09-04T10:48:24.827Z"
+    }, {
+      "id" : "7ce8f9d7-bc96-4fe9-83d0-f48dbc7cd880",
+      "mockId" : "1cacec31-0cb3-4aa8-8ccc-51cd9bece3aa",
+      "path" : "/notifications/history",
+      "method" : "GET",
+      "responseStatus" : 200,
+      "responseHeaders" : {
+        "Content-Type" : "application/json"
+      },
+      "responseBody" : "[{\"id\":\"00000000-0000-0000-0000-000000000000\",\"type\":\"EMAIL\",\"recipient\":\"dev-team@example.com\",\"subject\":\"Build Failure Alert\",\"status\":\"PENDING\",\"createdAt\":\"2024-01-01T00:00:00Z\",\"deliveredAt\":\"2024-01-01T00:00:00Z\"}]",
+      "delayMs" : 0,
+      "isActive" : true,
+      "requestBodySample" : null,
+      "validationMode" : "NONE",
+      "validationSchema" : null,
+      "validateMethod" : true,
+      "createdAt" : "2026-09-04T10:48:24.864Z",
+      "updatedAt" : "2026-09-04T10:48:24.865Z"
+    }, {
+      "id" : "10804331-6b8b-41d8-9cdd-4b66f9019b34",
+      "mockId" : "1cacec31-0cb3-4aa8-8ccc-51cd9bece3aa",
+      "path" : "/notifications/history/{notificationId}",
+      "method" : "GET",
+      "responseStatus" : 200,
+      "responseHeaders" : {
+        "Content-Type" : "application/json"
+      },
+      "responseBody" : "{\"id\":\"00000000-0000-0000-0000-000000000000\",\"type\":\"EMAIL\",\"recipient\":\"dev-team@example.com\",\"subject\":\"Build Failure Alert\",\"status\":\"PENDING\",\"createdAt\":\"2024-01-01T00:00:00Z\",\"deliveredAt\":\"2024-01-01T00:00:00Z\",\"fullPayload\":{},\"errorMessage\":\"string\",\"attempts\":0}",
+      "delayMs" : 0,
+      "isActive" : true,
+      "requestBodySample" : null,
+      "validationMode" : "NONE",
+      "validationSchema" : null,
+      "validateMethod" : true,
+      "createdAt" : "2026-09-04T10:48:24.875Z",
+      "updatedAt" : "2026-09-04T10:48:24.875Z"
+    }, {
+      "id" : "c38d86e5-7d14-440c-8b9b-a257299586d3",
+      "mockId" : "1cacec31-0cb3-4aa8-8ccc-51cd9bece3aa",
+      "path" : "/notifications/slack",
+      "method" : "POST",
+      "responseStatus" : 202,
+      "responseHeaders" : {
+        "Content-Type" : "application/json"
+      },
+      "responseBody" : "{\"notificationId\":\"f47ac10b-58cc-4372-a567-0e02b2c3d479\",\"status\":\"QUEUED\",\"correlationId\":\"550e8400-e29b-41d4-a716-446655440000\",\"estimatedDelivery\":\"2024-01-01T00:00:00Z\"}",
+      "delayMs" : 0,
+      "isActive" : true,
+      "requestBodySample" : "{\"channel\":\"#forge-alerts\",\"message\":\":warning: *FAILURE*: Enhancement job for `payment-service` timed out.\",\"blocks\":{\"blocks\":[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"Pipeline failed. <https://logs.url|View Logs>\"}}]}}",
+      "validationMode" : "NONE",
+      "validationSchema" : null,
+      "validateMethod" : true,
+      "createdAt" : "2026-09-04T10:48:24.845Z",
+      "updatedAt" : "2026-09-04T10:48:24.845Z"
+    }, {
+      "id" : "b99dc6dc-adb5-4a9e-98eb-3f2a75f95c45",
+      "mockId" : "1cacec31-0cb3-4aa8-8ccc-51cd9bece3aa",
+      "path" : "/notifications/webhook",
+      "method" : "POST",
+      "responseStatus" : 202,
+      "responseHeaders" : {
+        "Content-Type" : "application/json"
+      },
+      "responseBody" : "{\"notificationId\":\"f47ac10b-58cc-4372-a567-0e02b2c3d479\",\"status\":\"QUEUED\",\"correlationId\":\"550e8400-e29b-41d4-a716-446655440000\",\"estimatedDelivery\":\"2024-01-01T00:00:00Z\"}",
+      "delayMs" : 0,
+      "isActive" : true,
+      "requestBodySample" : "{\"targetUrl\":\"https://jira.example.com/webhook/issue-update\",\"method\":\"POST\",\"headers\":{\"X-API-Key\":\"12345\"},\"payload\":{\"event\":\"pipeline_finished\",\"status\":\"SUCCESS\",\"repository\":\"payment-service\"}}",
+      "validationMode" : "NONE",
+      "validationSchema" : null,
+      "validateMethod" : true,
+      "createdAt" : "2026-09-04T10:48:24.855Z",
+      "updatedAt" : "2026-09-04T10:48:24.856Z"
+    } ]
+  } ]
+}

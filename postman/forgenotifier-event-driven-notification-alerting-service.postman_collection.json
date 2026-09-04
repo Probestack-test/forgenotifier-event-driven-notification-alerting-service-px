@@ -1,0 +1,275 @@
+{
+  "info" : {
+    "name" : "forgenotifier-event-driven-notification-alerting-service Postman Collection",
+    "description" : "Centralized communication bus for the ForgeSphere platform. \nHandles all outgoing notifications including Email (SMTP), Slack messages, \nand generic outgoing Webhooks. \nTriggers alerts based on scheduled job failures, queue overload, \nor successful enhancement completions.\n\n\nOpenAPI version: 1.0.0",
+    "schema" : "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth" : {
+    "type" : "bearer",
+    "bearer" : [ {
+      "key" : "token",
+      "value" : "{{accessToken}}",
+      "type" : "string"
+    } ]
+  },
+  "variable" : [ {
+    "key" : "baseUrl",
+    "value" : "https://notifier.forgesphere.lightning.com/v1",
+    "type" : "string",
+    "description" : "Override with the base URL of the deployed Apigee proxy."
+  }, {
+    "key" : "accessToken",
+    "value" : "",
+    "type" : "string"
+  }, {
+    "key" : "notificationType",
+    "value" : "",
+    "type" : "string",
+    "description" : "Filter by the delivery channel."
+  }, {
+    "key" : "status",
+    "value" : "",
+    "type" : "string",
+    "description" : "Filter by delivery status."
+  }, {
+    "key" : "correlationId",
+    "value" : "",
+    "type" : "string",
+    "description" : "Filter by the job/task correlation ID."
+  }, {
+    "key" : "page",
+    "value" : "",
+    "type" : "string"
+  }, {
+    "key" : "size",
+    "value" : "",
+    "type" : "string"
+  }, {
+    "key" : "notificationId",
+    "value" : "",
+    "type" : "string"
+  }, {
+    "key" : "ruleId",
+    "value" : "",
+    "type" : "string"
+  } ],
+  "item" : [ {
+    "name" : "Send an HTML email notification",
+    "request" : {
+      "method" : "POST",
+      "description" : "Send an HTML email notification\n\nResponses:\n- 202: Email accepted for delivery by the SMTP relay.\n- 400: Invalid request body or missing fields (e.g., invalid email, missing payload).\n- 500: Unexpected SMTP/Slack/Network error occurred.",
+      "header" : [ {
+        "key" : "Content-Type",
+        "value" : "application/json",
+        "type" : "text"
+      } ],
+      "body" : {
+        "mode" : "raw",
+        "raw" : "{}",
+        "options" : {
+          "raw" : {
+            "language" : "json"
+          }
+        }
+      },
+      "url" : {
+        "raw" : "{{baseUrl}}/notifications/email",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "notifications", "email" ]
+      }
+    },
+    "response" : [ ]
+  }, {
+    "name" : "Send a message to a Slack channel",
+    "request" : {
+      "method" : "POST",
+      "description" : "Send a message to a Slack channel\n\nResponses:\n- 202: Slack message queued for dispatch.\n- 400: Invalid request body or missing fields (e.g., invalid email, missing payload).\n- 500: Unexpected SMTP/Slack/Network error occurred.",
+      "header" : [ {
+        "key" : "Content-Type",
+        "value" : "application/json",
+        "type" : "text"
+      } ],
+      "body" : {
+        "mode" : "raw",
+        "raw" : "{}",
+        "options" : {
+          "raw" : {
+            "language" : "json"
+          }
+        }
+      },
+      "url" : {
+        "raw" : "{{baseUrl}}/notifications/slack",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "notifications", "slack" ]
+      }
+    },
+    "response" : [ ]
+  }, {
+    "name" : "Trigger an outgoing HTTP webhook",
+    "request" : {
+      "method" : "POST",
+      "description" : "Trigger an outgoing HTTP webhook\n\nResponses:\n- 202: Webhook triggered asynchronously.\n- 400: Invalid request body or missing fields (e.g., invalid email, missing payload).\n- 500: Unexpected SMTP/Slack/Network error occurred.",
+      "header" : [ {
+        "key" : "Content-Type",
+        "value" : "application/json",
+        "type" : "text"
+      } ],
+      "body" : {
+        "mode" : "raw",
+        "raw" : "{}",
+        "options" : {
+          "raw" : {
+            "language" : "json"
+          }
+        }
+      },
+      "url" : {
+        "raw" : "{{baseUrl}}/notifications/webhook",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "notifications", "webhook" ]
+      }
+    },
+    "response" : [ ]
+  }, {
+    "name" : "Paginated audit log of sent notifications",
+    "request" : {
+      "method" : "GET",
+      "description" : "Paginated audit log of sent notifications\n\nResponses:\n- 200: List of notification records.\n- 500: Unexpected SMTP/Slack/Network error occurred.",
+      "header" : [ ],
+      "url" : {
+        "raw" : "{{baseUrl}}/notifications/history?notificationType={{notificationType}}&status={{status}}&correlationId={{correlationId}}&page={{page}}&size={{size}}",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "notifications", "history" ],
+        "query" : [ {
+          "key" : "notificationType",
+          "value" : "{{notificationType}}",
+          "disabled" : true,
+          "description" : "Filter by the delivery channel."
+        }, {
+          "key" : "status",
+          "value" : "{{status}}",
+          "disabled" : true,
+          "description" : "Filter by delivery status."
+        }, {
+          "key" : "correlationId",
+          "value" : "{{correlationId}}",
+          "disabled" : true,
+          "description" : "Filter by the job/task correlation ID."
+        }, {
+          "key" : "page",
+          "value" : "{{page}}",
+          "disabled" : true
+        }, {
+          "key" : "size",
+          "value" : "{{size}}",
+          "disabled" : true
+        } ]
+      }
+    },
+    "response" : [ ]
+  }, {
+    "name" : "Get specific notification details",
+    "request" : {
+      "method" : "GET",
+      "description" : "Get specific notification details\n\nResponses:\n- 200: Detailed notification record.\n- 404: The requested notification record or alert rule does not exist.",
+      "header" : [ ],
+      "url" : {
+        "raw" : "{{baseUrl}}/notifications/history/:notificationId",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "notifications", "history", ":notificationId" ],
+        "variable" : [ {
+          "key" : "notificationId",
+          "value" : "{{notificationId}}"
+        } ]
+      }
+    },
+    "response" : [ ]
+  }, {
+    "name" : "List all active alert rules",
+    "request" : {
+      "method" : "GET",
+      "description" : "List all active alert rules\n\nResponses:\n- 200: List of alert rules.\n- 500: Unexpected SMTP/Slack/Network error occurred.",
+      "header" : [ ],
+      "url" : {
+        "raw" : "{{baseUrl}}/alerts/rules",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "alerts", "rules" ]
+      }
+    },
+    "response" : [ ]
+  }, {
+    "name" : "Create a new alert rule",
+    "request" : {
+      "method" : "POST",
+      "description" : "Create a new alert rule\n\nResponses:\n- 201: Alert rule created successfully.\n- 400: Invalid request body or missing fields (e.g., invalid email, missing payload).\n- 500: Unexpected SMTP/Slack/Network error occurred.",
+      "header" : [ {
+        "key" : "Content-Type",
+        "value" : "application/json",
+        "type" : "text"
+      } ],
+      "body" : {
+        "mode" : "raw",
+        "raw" : "{}",
+        "options" : {
+          "raw" : {
+            "language" : "json"
+          }
+        }
+      },
+      "url" : {
+        "raw" : "{{baseUrl}}/alerts/rules",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "alerts", "rules" ]
+      }
+    },
+    "response" : [ ]
+  }, {
+    "name" : "Get alert rule by ID",
+    "request" : {
+      "method" : "GET",
+      "description" : "Get alert rule by ID\n\nResponses:\n- 200: Alert rule details.\n- 404: The requested notification record or alert rule does not exist.",
+      "header" : [ ],
+      "url" : {
+        "raw" : "{{baseUrl}}/alerts/rules/:ruleId",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "alerts", "rules", ":ruleId" ],
+        "variable" : [ {
+          "key" : "ruleId",
+          "value" : "{{ruleId}}"
+        } ]
+      }
+    },
+    "response" : [ ]
+  }, {
+    "name" : "Delete an alert rule",
+    "request" : {
+      "method" : "DELETE",
+      "description" : "Delete an alert rule\n\nResponses:\n- 204: Alert rule successfully deleted.\n- 404: The requested notification record or alert rule does not exist.",
+      "header" : [ ],
+      "url" : {
+        "raw" : "{{baseUrl}}/alerts/rules/:ruleId",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "alerts", "rules", ":ruleId" ],
+        "variable" : [ {
+          "key" : "ruleId",
+          "value" : "{{ruleId}}"
+        } ]
+      }
+    },
+    "response" : [ ]
+  }, {
+    "name" : "Manually evaluate all alert rules",
+    "request" : {
+      "method" : "POST",
+      "description" : "Manually evaluate all alert rules\n\nResponses:\n- 200: Evaluation complete.\n- 500: Unexpected SMTP/Slack/Network error occurred.",
+      "header" : [ ],
+      "url" : {
+        "raw" : "{{baseUrl}}/alerts/check",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "alerts", "check" ]
+      }
+    },
+    "response" : [ ]
+  } ]
+}
